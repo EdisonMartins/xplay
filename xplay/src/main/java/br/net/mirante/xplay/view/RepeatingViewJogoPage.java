@@ -2,6 +2,8 @@ package br.net.mirante.xplay.view;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -20,10 +22,13 @@ public class RepeatingViewJogoPage extends WebPage {
 	
 	private List<Jogo> jogos;
 	
+	@Inject
+	private JogoDAO jogoDAO;
+	
 	
 	
 	public RepeatingViewJogoPage() {		
-		jogos = new JogoDAO().listar();
+		jogos = jogoDAO.listar();
 		
 		 RepeatingView view = new RepeatingView("repeater");
 		 

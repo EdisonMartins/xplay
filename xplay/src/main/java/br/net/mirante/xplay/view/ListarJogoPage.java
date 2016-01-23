@@ -2,6 +2,8 @@ package br.net.mirante.xplay.view;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -24,11 +26,12 @@ public class ListarJogoPage extends WebPage{
 	
 	private List<Jogo> jogos;
 	
+	@Inject
+	private JogoDAO jogoDAO;
 	
-	public ListarJogoPage() {
-		// TODO Auto-generated constructor stub
-		
-		jogos = new JogoDAO().listar();
+	
+	public ListarJogoPage() {		
+		jogos = jogoDAO.listar();
 		add(new ListView<Jogo>("tabelaJogos", new PropertyModel<List<Jogo>>(this, "jogos")) {
             private static final long serialVersionUID = 1L;
 

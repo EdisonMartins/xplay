@@ -3,6 +3,10 @@ package br.net.mirante.xplay.view;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.CheckBox;
@@ -25,6 +29,9 @@ public class IncluirJogoPage extends WebPage {
 	private static final long serialVersionUID = 1L;
 
 	private Jogo jogo;
+	
+	@Inject
+	private JogoDAO jogoDAO;
 
 	private TextField<String> emprestadoPara;
 
@@ -39,10 +46,10 @@ public class IncluirJogoPage extends WebPage {
 		form.add(new DropDownChoice<>("genero", new PropertyModel<>(jogo, "genero"), generos).setRequired(true));
 		form.add(new TextArea<>("descricao", new PropertyModel<>(jogo, "descricao")));
 		form.add(new TextField<>("nota", new PropertyModel<>(jogo, "nota")).add(RangeValidator.range(0, 10)));
-		form.add(new CheckBox("emprestado", new PropertyModel<Boolean>(jogo, "emprestado")) {
-			/**
+/*		form.add(new CheckBox("emprestado", new PropertyModel<Boolean>(jogo, "emprestado")) {
+			*//**
 			 * 
-			 */
+			 *//*
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -60,7 +67,17 @@ public class IncluirJogoPage extends WebPage {
 			}
 			
 			
-		});
+		});*/
+		
+		form.add(new CheckBox("emprestado", new PropertyModel<Boolean>(jogo, "emprestado")).add(new AjaxFormComponentUpdatingBehavior("onchange") {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            protected void onUpdate(AjaxRequestTarget target) {
+                target.add(emprestadoPara);
+            }
+        }));
+		
 		emprestadoPara = new TextField<String>("emprestadoPara", new PropertyModel<String>(jogo, "emprestadoPara")) {
 			private static final long serialVersionUID = 1L;
 
@@ -84,7 +101,7 @@ public class IncluirJogoPage extends WebPage {
 
 			@Override
 			public void onSubmit() {
-				new JogoDAO().salvar(jogo);
+				jogoDAO.salvar(jogo);
 				setResponsePage(ListarJogoPage.class);
 			}
 		});
