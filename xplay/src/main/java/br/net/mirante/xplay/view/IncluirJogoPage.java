@@ -69,7 +69,7 @@ public class IncluirJogoPage extends WebPage {
 			
 		});*/
 		
-		form.add(new CheckBox("emprestado", new PropertyModel<Boolean>(jogo, "emprestado")).add(new AjaxFormComponentUpdatingBehavior("onchange") {
+		form.add(new CheckBox("emprestado", new PropertyModel<Boolean>(jogo, "emprestado")).add(new AjaxFormComponentUpdatingBehavior("change") {
             private static final long serialVersionUID = 1L;
 
             @Override
