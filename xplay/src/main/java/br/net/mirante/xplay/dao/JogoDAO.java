@@ -3,8 +3,11 @@ package br.net.mirante.xplay.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import br.net.mirante.xplay.model.Jogo;
 
+@Component
 public class JogoDAO {
 	private static List<Jogo> jogos = new ArrayList<>();
 
