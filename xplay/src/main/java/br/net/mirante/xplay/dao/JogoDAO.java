@@ -26,4 +26,32 @@ public class JogoDAO {
 		return jogos;
 	}
 
+	public Jogo getJogoPelo(String nome) {
+		for (Jogo jogo : jogos) {
+			if (jogo.getNome().equals(nome)) {
+				return jogo;
+			}
+		}
+
+		return new Jogo();
+	}
+
+	public String getAmigosComJogo() {
+
+		String amigosComJogo = "";
+
+		for (Jogo jogo : jogos) {
+
+			if (jogo.isEmprestado()) {
+
+				amigosComJogo += jogo.getEmprestadoPara() + " ";
+
+			}
+
+		}
+
+		return amigosComJogo;
+
+	}
+
 }

@@ -33,5 +33,6 @@ public class WicketApplication extends WebApplication
 		getComponentInstantiationListeners().add(new SpringComponentInjector(this));
 
 		// add your configuration here
+		mountPage("game", IncluirJogoPage.class);
 	}
 }

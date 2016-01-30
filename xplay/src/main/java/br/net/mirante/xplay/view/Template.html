@@ -12,13 +12,11 @@
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
 		integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
 		crossorigin="anonymous">
-
-
 </header>
 <body>
 	<div class="container">
 		<div class="page-header">
-			<h1>Incluir jogo</h1>
+			<h1>[HEADER]</h1>
 		</div>
 
 
@@ -33,37 +31,7 @@
 
 
 			<div class="col-md-9">
-
-				<form wicket:id="form">
-					<div wicket:id="feedback"></div>
-					<div class="form-group">
-						<label>Nome*: </label> <input class="form-control" type="text"
-							wicket:id="nome" />
-					</div>
-					<div class="form-group">
-						<label>Gênero:</label> <select class="form-control"
-							wicket:id="genero" />
-					</div>
-					<div class="form-group">
-						<label>Descrição:</label>
-						<textarea class="form-control" wicket:id="descricao"></textarea>
-					</div>
-					<div class="form-group">
-						<label>Nota:</label> <input class="form-control" type="text"
-							wicket:id="nota" />
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" wicket:id="emprestado" />
-							Emprestado
-						</label> <input class="form-control" type="text"
-							wicket:id="emprestadoPara" />
-					</div>
-					<input type="submit" wicket:id="salvar" class="btn btn-default" />
-				</form>
-
-				<br />
-				<button wicket:id="listView" class="btn btn-default">[ListView]</button>
-
+				<wicket:child></wicket:child>
 			</div>
 
 
