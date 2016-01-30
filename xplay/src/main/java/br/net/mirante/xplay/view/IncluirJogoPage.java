@@ -51,8 +51,6 @@ public class IncluirJogoPage extends Template {
 		recebaParametros();
 		buildForm();
 		buildLinkListView();
-		
-		
 
 	}
 
@@ -70,52 +68,51 @@ public class IncluirJogoPage extends Template {
 		List<String> generos = Arrays.asList("Ação", "RPG", "Estratégia");
 		form = new Form<Jogo>("form");
 
-		
 		CampoBorder nomeCB = new CampoBorder("nomeCB", "Nome");
 		nomeCB.add(new TextField<>("nomeTF", new PropertyModel<>(jogo, "nome")).setRequired(true));
-		form.add(nomeCB);
 		
+		form.queue(nomeCB);
+
 		CampoBorder generoCB = new CampoBorder("generoCB", "Gênero");
-		generoCB.add(new DropDownChoice<>("generoSelect", new PropertyModel<>(jogo, "genero"), generos).setRequired(true));
-		form.add(generoCB);
-		
-		
+		generoCB.add(new DropDownChoice<>("generoSelect", new PropertyModel<>(jogo, "genero"), generos)
+				.setRequired(true));
+		form.queue(generoCB);
+
 		CampoBorder descricaoCB = new CampoBorder("descricaoCB", "Descrição");
 		descricaoCB.add(new TextArea<>("descricaoTA", new PropertyModel<>(jogo, "descricao")));
-		form.add(descricaoCB);
-		
-		
+		form.queue(descricaoCB);
+
 		CampoBorder notaCB = new CampoBorder("notaCB", "Nota");
 		notaCB.add(new TextField<>("notaTF", new PropertyModel<>(jogo, "nota")).add(RangeValidator.range(0, 10)));
-		form.add(notaCB);
-
-		
+		form.queue(notaCB);
 
 		emprestadoPara = new TextField<String>("emprestadoPara", new PropertyModel<String>(jogo, "emprestadoPara")) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public boolean isVisible() {
-				return jogo.isEmprestado();
+				boolean teste = jogo.isEmprestado();
+				return teste;
 			}
 
 		};
 		emprestadoPara.setOutputMarkupId(true);
-		setOutputMarkupPlaceholderTag(true);
 		
-		form.add(new CheckBox("emprestado", new PropertyModel<Boolean>(jogo, "emprestado"))
-		.add(new AjaxFormComponentUpdatingBehavior("change") {
-			private static final long serialVersionUID = 1L;
+		form.queue(emprestadoPara.setRequired(true));
 
-			@Override
-			protected void onUpdate(AjaxRequestTarget target) {
-				target.add(emprestadoPara);
-			}
-		}));
+		form.queue(new CheckBox("emprestado", new PropertyModel<Boolean>(jogo, "emprestado"))
+				.add(new AjaxFormComponentUpdatingBehavior("change") {
+					private static final long serialVersionUID = 1L;
 
-		form.add(emprestadoPara.setRequired(true));
+					@Override
+					protected void onUpdate(AjaxRequestTarget target) {
+						target.add(emprestadoPara);
+					}
+				}));
 
-		form.add(new Button("salvar") {
+		
+
+		form.queue(new Button("salvar") {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -125,7 +122,7 @@ public class IncluirJogoPage extends Template {
 			}
 		});
 
-		form.add(new Label("feedback"));
+		form.queue(new Label("feedback"));
 		add(form);
 	}
 
