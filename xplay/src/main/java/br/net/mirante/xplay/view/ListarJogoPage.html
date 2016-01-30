@@ -1,96 +1,54 @@
-<!DOCTYPE html>
-<html>
-<header>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-		crossorigin="anonymous">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-		integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
-		crossorigin="anonymous">
-
-
-</header>
-<body>
+<wicket:extend>
 	<div class="container">
 		<div class="page-header">
 			<h1>Listar jogos</h1>
 		</div>
 
+		<div wicket:id="feedback"></div>
+		<div wicket:id="fragmento" class="container" />
 
-		<div class="row">
+		<wicket:fragment wicket:id="list">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Nota</th>
+						<th>Gênero</th>
+						<th>Emprestado</th>
+						<th style="text-align: center;"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr wicket:id="tabelaJogos">
+						<td wicket:id="nome"></td>
+						<td wicket:id="nota"></td>
+						<td wicket:id="genero"></td>
+						<td wicket:id="emprestado"></td>
+						<td>
+							<button wicket:id="alterar" class="btn btn-default">Alterar</button>
+							<a wicket:id="editar" class="btn btn-default">Editar</a> <a
+							wicket:id="editarParameter" class="btn btn-default">Parameter</a>
+							<a wicket:id="editarIndexed" class="btn btn-default">Indexed</a>
+							<a wicket:id="editarBookmarkable" class="btn btn-default">Bookmarkable</a>
 
-			<div class="col-md-3">
-
-				<div wicket:id="menu" />
-
-			</div>
-
-			<div class="col-md-9">
-
-
-				<div wicket:id="feedback"></div>
-				<div wicket:id="fragmento" class="container" />
-
-				<wicket:fragment wicket:id="list">
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>Nome</th>
-								<th>Nota</th>
-								<th>Gênero</th>
-								<th>Emprestado</th>
-								<th style="text-align: center;"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr wicket:id="tabelaJogos">
-								<td wicket:id="nome"></td>
-								<td wicket:id="nota"></td>
-								<td wicket:id="genero"></td>
-								<td wicket:id="emprestado"></td>
-								<td>
-									<button wicket:id="alterar" class="btn btn-default">Alterar</button>
-									<a wicket:id="editar" class="btn btn-default">Editar</a> <a
-									wicket:id="editarParameter" class="btn btn-default">Parameter</a>
-									<a wicket:id="editarIndexed" class="btn btn-default">Indexed</a>
-									<a wicket:id="editarBookmarkable" class="btn btn-default">Bookmarkable</a>
-
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</wicket:fragment>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</wicket:fragment>
 
 
-				<wicket:fragment wicket:id="amigos">
-					<div wicket:id="label"></div>
+		<wicket:fragment wicket:id="amigos">
+			<div wicket:id="label"></div>
 
-				</wicket:fragment>
-
-
-				<a wicket:id="novo" class="btn">Novo</a> <a
-					wicket:id="mostrarAmigos" class="btn">Mostrar Amigos</a> <a
-					wicket:id="RepeatingView" class="btn">[RepeatingView]</a>
-
-			</div>
+		</wicket:fragment>
 
 
+		<a wicket:id="novo" class="btn">Novo</a> <a wicket:id="mostrarAmigos"
+			class="btn">Mostrar Amigos</a> <a wicket:id="RepeatingView"
+			class="btn">[RepeatingView]</a>
 
-		</div>
 
 	</div>
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-		crossorigin="anonymous"></script>
-</body>
-</html>
+</wicket:extend>

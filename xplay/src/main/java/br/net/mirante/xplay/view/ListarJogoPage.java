@@ -6,7 +6,6 @@ import javax.inject.Inject;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -24,7 +23,7 @@ import br.net.mirante.xplay.converter.SimNaoConverter;
 import br.net.mirante.xplay.dao.JogoDAO;
 import br.net.mirante.xplay.model.Jogo;
 
-public class ListarJogoPage extends WebPage {
+public class ListarJogoPage extends Template {
 
 	/**
 	 * 
@@ -39,7 +38,6 @@ public class ListarJogoPage extends WebPage {
 	private boolean mostrarLista;
 
 	public ListarJogoPage() {
-		add(new Menu("menu"));
 
 		jogos = jogoDAO.listar();
 
